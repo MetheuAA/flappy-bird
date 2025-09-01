@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Flappy Bird Clássico</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="gameCanvas" width="500" height="750"></canvas>
+
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen">
+      <div class="screen-inner">
+        <img id="startscreen-logo" src="assets/logo/logo-senac.png" alt="Logo Senac">
+        <h1>Flappy Bird Clássico</h1>
+        <p>Pressione <strong>Espaço</strong> / toque / clique para voar. Pressione <strong>P</strong> para pausar.</p>
+        <button id="start-button" disabled>A Carregar...</button>
+      </div>
+    </div>
+
+    <!-- Pause Screen -->
+    <div id="pause-screen" class="screen hidden">
+      <div class="screen-inner">
+        <h2>Jogo em Pausa</h2>
+        <p>Pressione <strong>P</strong> para continuar.</p>
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="game-over-screen" class="screen hidden">
+      <div class="screen-inner">
+        <img id="gameover-sprite" src="assets/sprites/gameover.png" alt="Game Over">
+        <p>Pontuação: <span id="final-score">0</span></p>
+        <p>Recorde: <span id="best-score">0</span></p>
+        <button id="restart-button">Reiniciar</button>
+      </div>
+    </div>
+
+    <!-- hidden sprite preloader -->
+    <div id="sprite-container" aria-hidden="true" class="hidden">
+      <img id="background_day" src="assets/sprites/background-day.png" alt="">
+      <img id="base" src="assets/sprites/base.png" alt="">
+      <img id="bluebird_downflap" src="assets/sprites/bluebird-downflap.png" alt="">
+      <img id="bluebird_midflap" src="assets/sprites/bluebird-midflap.png" alt="">
+      <img id="bluebird_upflap" src="assets/sprites/bluebird-upflap.png" alt="">
+      <img id="gameover" src="assets/sprites/gameover.png" alt="">
+      <img id="pipe_green" src="assets/sprites/pipe-green.png" alt="">
+      <img id="pipe_red" src="assets/sprites/pipe-red.png" alt="">
+      <img id="logo_senac" src="assets/logo/logo-senac.png" alt="">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
