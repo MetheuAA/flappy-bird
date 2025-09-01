@@ -123,7 +123,7 @@ button[disabled]{
   text-align: center;
   border-radius: 8px;
   border: 2px solid #ffd166;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(20, 25, 30, 0.85);
   color: #fff;
   outline: none;
 }
@@ -156,5 +156,29 @@ button[disabled]{
 #save-score:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+
+/* Ranking no Game Over */
+#ranking {
+  margin-top: 10px;
+  text-align: center;
+}
+
+#ranking h3 {
+  color: #ffd166; /* título do ranking em destaque */
+  margin-bottom: 6px;
+}
+
+#ranking-list {
+  list-style: decimal;
+  padding-left: 0;
+}
+
+#ranking-list li {
+  color: #fff;          /* nomes e pontuação em branco */
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
 }
 
