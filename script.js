@@ -8,7 +8,6 @@ ctx.imageSmoothingEnabled = false;
 const startScreen = document.getElementById('start-screen');
 const gameOverScreen = document.getElementById('game-over-screen');
 const startBtn = document.getElementById('start-button');
-const restartBtn = document.getElementById('restart-button');
 const finalScoreEl = document.getElementById('final-score');
 const bestScoreEl = document.getElementById('best-score');
 const spriteContainer = document.getElementById('sprite-container');
@@ -168,7 +167,7 @@ function drawBase(speed){
 function drawHUD(){
     ctx.font='800 32px Montserrat, sans-serif';
     ctx.textAlign='center';
-    ctx.lineWidth=6; ctx.strokeStyle='rgba(0,0,0,0.45)'; ctx.fillStyle='#fff';
+    ctx.lineWidth=6; ctx.strokeStyle='rgba(255, 255, 255, 0.45)'; ctx.fillStyle='#fff';
     ctx.strokeText(String(score),canvas.width/2,80);
     ctx.fillText(String(score),canvas.width/2,80);
 }
@@ -205,7 +204,6 @@ window.addEventListener('keydown',e=>{
 });
 canvas.addEventListener('pointerdown',handleFlap,{passive:true});
 startBtn.addEventListener('click',startGame);
-restartBtn.addEventListener('click',restartGame);
 
 let paused = false;
 function togglePause(){
@@ -230,8 +228,66 @@ function onHit(){
     if(score>bestScore){ bestScore=score; localStorage.setItem('flappy_best',String(bestScore)); }
     finalScoreEl.textContent=String(score);
     bestScoreEl.textContent=String(bestScore);
+
+    // Reset ranking UI
+    nameInput.disabled = false;
+    saveBtn.disabled = false;
+    nameInput.value = '';
+    rankingDiv.classList.add('hidden');
+
     gameOverScreen.classList.remove('hidden');
 }
+
+
+
+// --- Ranking ---
+const saveBtn = document.getElementById('save-score');
+const nameInput = document.getElementById('player-name');
+const rankingDiv = document.getElementById('ranking');
+const rankingList = document.getElementById('ranking-list');
+
+function getRanking(){
+    const ranking = JSON.parse(localStorage.getItem('flappy_ranking') || '[]');
+    return ranking;
+}
+
+function saveRanking(name, score){
+    const ranking = getRanking();
+    ranking.push({name, score});
+    // Ordena decrescente e mantém só top 5
+    ranking.sort((a,b)=>b.score - a.score);
+    localStorage.setItem('flappy_ranking', JSON.stringify(ranking.slice(0,5)));
+}
+
+function showRanking(){
+    const ranking = getRanking();
+    rankingList.innerHTML = '';
+    ranking.forEach(entry=>{
+        const li = document.createElement('li');
+        li.textContent = `${entry.name} - ${entry.score}`;
+        rankingList.appendChild(li);
+    });
+    rankingDiv.classList.remove('hidden');
+}
+
+// Botão salvar
+saveBtn.addEventListener('click',()=>{
+    const name = nameInput.value.trim() || 'Anônimo';
+    saveRanking(name, score);
+    showRanking();
+
+    // Desabilita input e botão
+    nameInput.disabled = true;
+    saveBtn.disabled = true;
+
+    // Volta automaticamente para a tela inicial após 1 segundo
+    setTimeout(()=>{
+        gameOverScreen.classList.add('hidden');
+        startScreen.classList.remove('hidden');
+    }, 1000);
+});
+
+
 
 function restartGame(){
     startGame();

@@ -104,3 +104,57 @@ button[disabled]{
   max-width:360px;
   margin-bottom:8px;
 }
+
+/* Input de nome no Game Over */
+#name-entry {
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+#player-name {
+  width: 80%;
+  max-width: 220px;
+  padding: 8px 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid #ffd166;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #fff;
+  outline: none;
+}
+
+#player-name::placeholder {
+  color: #ccc;
+  font-weight: 400;
+}
+
+/* Botão de salvar pontuação */
+#save-score {
+  width: 50%;
+  max-width: 140px;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #ffd166;
+  color: #1f2937;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transition: transform 0.1s;
+}
+
+#save-score:active {
+  transform: scale(0.95);
+}
+
+#save-score:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+

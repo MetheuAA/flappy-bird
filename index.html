@@ -30,14 +30,24 @@
     </div>
 
     <!-- Game Over Screen -->
-    <div id="game-over-screen" class="screen hidden">
-      <div class="screen-inner">
-        <img id="gameover-sprite" src="assets/sprites/gameover.png" alt="Game Over">
-        <p>Pontuação: <span id="final-score">0</span></p>
-        <p>Recorde: <span id="best-score">0</span></p>
-        <button id="restart-button">Reiniciar</button>
-      </div>
+<div id="game-over-screen" class="screen hidden">
+  <div class="screen-inner">
+    <img id="gameover-sprite" src="assets/sprites/gameover.png" alt="Game Over">
+    <p>Pontuação: <span id="final-score">0</span></p>
+    <p>Recorde: <span id="best-score">0</span></p>
+
+    <!-- Nome e ranking -->
+    <div id="name-entry">
+      <input type="text" id="player-name" placeholder="Digite seu nome" maxlength="12">
+      <button id="save-score">Salvar Pontuação</button>
     </div>
+    <div id="ranking" class="hidden">
+      <h3>Ranking</h3>
+      <ol id="ranking-list"></ol>
+    </div>
+
+  </div>
+</div>
 
     <!-- hidden sprite preloader -->
     <div id="sprite-container" aria-hidden="true" class="hidden">
