@@ -1,68 +1,68 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Flappy Bird Clássico</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/sprites/bluebird-midflap.png" type="image/x-icon">
+    <title>Flappy Bird - Senac</title>
 </head>
+
 <body>
-  <div id="game-container">
-    <canvas id="gameCanvas" width="500" height="750"></canvas>
 
-    <!-- Start Screen -->
-    <div id="start-screen" class="screen">
-      <div class="screen-inner">
-        <img id="startscreen-logo" src="assets/logo/logo-senac.png" alt="Logo Senac">
-        <h1>Flappy Bird Clássico</h1>
-        <p>Pressione <strong>Espaço</strong> / toque / clique para voar. Pressione <strong>P</strong> para pausar.</p>
-        <button id="start-button" disabled>A Carregar...</button>
-      </div>
+    <div class="game-container">
+        <canvas id="gameCanvas" width="500" height="750"></canvas>
+
+        <div id="sprite-container" style="display: none;">
+            <img id="bird_up" src="assets/sprites/bluebird-upflap.png" alt="Pássaro asa para cima">
+            <img id="bird_mid" src="assets/sprites/bluebird-midflap.png" alt="Pássaro asa no meio">
+            <img id="bird_down" src="assets/sprites/bluebird-downflap.png" alt="Pássaro asa para baixo">
+            <img id="pipe_green" src="assets/sprites/pipe-green.png" alt="Cano verde">
+            <img id="pipe_red" src="assets/sprites/pipe-red.png" alt="Cano vermelho">
+            <img id="background_day" src="assets/sprites/background-day.png" alt="Cenário de dia">
+            <img id="base" src="assets/sprites/base.png" alt="Chão do jogo">
+            <img id="logo_senac" src="assets/logo/logo-senac.webp" alt="Logo Senac">
+        </div>
+
+        <!-- TELA INICIAL -->
+        <div id="start-screen" class="screen">
+            <h1>Flappy Bird</h1>
+            <img src="assets/logo/logo-senac.webp" alt="Logo Senac" id="start-screen-logo">
+            <p>Pressione a tecla Espaço ou clique para voar!</p>
+            <button id="start-button">A Carregar...</button>
+            <button id="ranking-button">Ranking</button>
+        </div>
+
+        <div id="score-display">0</div>
+
+        <!-- GAME OVER -->
+        <div id="game-over-screen" class="screen hidden">
+            <img src="assets/sprites/gameover.png" alt="Fim de Jogo" style="width: 80%; margin-bottom: 20px;">
+            <p>Pontuação: <span id="final-score">0</span></p>
+            <p>Melhor Pontuação: <span id="high-score">0</span></p>
+            <input type="text" id="player-name" placeholder="Digite seu nome" maxlength="12">
+            <button id="save-score">Salvar Pontuação</button>
+            <button id="restart-button">Jogar Novamente</button>
+        </div>
+
+        <!-- PAUSE -->
+        <div id="pause-screen" class="screen hidden">
+            <h1>Jogo Pausado</h1>
+            <button id="resume-button">Continuar</button>
+        </div>
+
+        <!-- RANKING -->
+        <div id="ranking-screen" class="screen hidden">
+            <h1>Ranking</h1>
+            <ol id="ranking-list"></ol>
+            <button id="back-ranking">Voltar</button>
+        </div>
+
     </div>
 
-    <!-- Pause Screen -->
-    <div id="pause-screen" class="screen hidden">
-      <div class="screen-inner">
-        <h2>Jogo em Pausa</h2>
-        <p>Pressione <strong>P</strong> para continuar.</p>
-      </div>
-    </div>
-
-    <!-- Game Over Screen -->
-<div id="game-over-screen" class="screen hidden">
-  <div class="screen-inner">
-    <img id="gameover-sprite" src="assets/sprites/gameover.png" alt="Game Over">
-    <p>Pontuação: <span id="final-score">0</span></p>
-    <p>Recorde: <span id="best-score">0</span></p>
-
-    <!-- Nome e ranking -->
-    <div id="name-entry">
-      <input type="text" id="player-name" placeholder="Digite seu nome" maxlength="12">
-      <button id="save-score">Salvar Pontuação</button>
-    </div>
-    <div id="ranking" class="hidden">
-      <h3>Ranking</h3>
-      <ol id="ranking-list"></ol>
-    </div>
-
-  </div>
-</div>
-
-    <!-- hidden sprite preloader -->
-    <div id="sprite-container" aria-hidden="true" class="hidden">
-      <img id="background_day" src="assets/sprites/background-day.png" alt="">
-      <img id="base" src="assets/sprites/base.png" alt="">
-      <img id="bluebird_downflap" src="assets/sprites/bluebird-downflap.png" alt="">
-      <img id="bluebird_midflap" src="assets/sprites/bluebird-midflap.png" alt="">
-      <img id="bluebird_upflap" src="assets/sprites/bluebird-upflap.png" alt="">
-      <img id="gameover" src="assets/sprites/gameover.png" alt="">
-      <img id="pipe_green" src="assets/sprites/pipe-green.png" alt="">
-      <img id="pipe_red" src="assets/sprites/pipe-red.png" alt="">
-      <img id="logo_senac" src="assets/logo/logo-senac.png" alt="">
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
+
 </html>
