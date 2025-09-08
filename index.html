@@ -13,6 +13,9 @@
 <body>
 
     <div class="game-container">
+        <!-- TOAST (novo) -->
+        <div id="toast" class="toast hidden"></div>
+
         <canvas id="gameCanvas" width="500" height="750"></canvas>
 
         <div id="sprite-container" style="display: none;">
@@ -26,40 +29,42 @@
             <img id="logo_senac" src="assets/logo/logo-senac.webp" alt="Logo Senac">
         </div>
 
-        <!-- TELA INICIAL -->
         <div id="start-screen" class="screen">
             <h1>Flappy Bird</h1>
-            <img src="assets/logo/logo-senac.webp" alt="Logo Senac" id="start-screen-logo">
-            <p>Pressione a tecla Espaço ou clique para voar!</p>
+            <img src="assets/logo/logo-senac-br.png" alt="Logo Senac" id="start-screen-logo">
+            <p>Pressione a tecla Espaço ou clique para voar! aperte P para pausar</p>
             <button id="start-button">A Carregar...</button>
+            <!-- NOVO BOTÃO DE RANKING -->
             <button id="ranking-button">Ranking</button>
         </div>
 
+        <!-- NOVA TELA DE RANKING -->
+        <div id="ranking-screen" class="screen hidden">
+            <h1>Ranking</h1>
+            <ul id="ranking-list"></ul>
+            <button id="back-button">Voltar</button>
+        </div>
+
+
+
         <div id="score-display">0</div>
 
-        <!-- GAME OVER -->
         <div id="game-over-screen" class="screen hidden">
             <img src="assets/sprites/gameover.png" alt="Fim de Jogo" style="width: 80%; margin-bottom: 20px;">
             <p>Pontuação: <span id="final-score">0</span></p>
             <p>Melhor Pontuação: <span id="high-score">0</span></p>
-            <input type="text" id="player-name" placeholder="Digite seu nome" maxlength="12">
-            <button id="save-score">Salvar Pontuação</button>
-            <button id="restart-button">Jogar Novamente</button>
+
+            <!-- ENTRADA DE NOME + SALVAR (novo) -->
+            <div id="name-entry">
+                <input type="text" id="player-name" maxlength="12" placeholder="Digite seu nome">
+                <button id="save-score">Salvar Pontuação</button>
+            </div>
         </div>
 
-        <!-- PAUSE -->
         <div id="pause-screen" class="screen hidden">
             <h1>Jogo Pausado</h1>
             <button id="resume-button">Continuar</button>
         </div>
-
-        <!-- RANKING -->
-        <div id="ranking-screen" class="screen hidden">
-            <h1>Ranking</h1>
-            <ol id="ranking-list"></ol>
-            <button id="back-ranking">Voltar</button>
-        </div>
-
     </div>
 
     <script src="script.js" defer></script>
